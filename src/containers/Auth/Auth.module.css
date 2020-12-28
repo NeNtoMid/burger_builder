@@ -1,0 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.logoutMessage {
+  text-align: center;
+  font-family: 'Lobster', cursive;
+  font-size: 5rem;
+}

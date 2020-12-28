@@ -1,0 +1,12 @@
+.unorderedList {
+  list-style-type: none;
+}
+
+.checkoutParagraph {
+  margin-top: 4rem;
+  padding: 0.23rem;
+  background-color: #cf8f2e;
+  border: 1px solid #aa6817;
+  width: 18rem;
+  color: white;
+}

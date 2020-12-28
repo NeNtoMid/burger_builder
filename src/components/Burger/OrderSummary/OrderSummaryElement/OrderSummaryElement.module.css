@@ -1,0 +1,19 @@
+.listElement {
+  margin: 0.6rem 0;
+}
+.ingredientName {
+  font-weight: bold;
+  margin-right: 1rem;
+}
+.ingredientQty {
+  display: inline-block;
+  position: absolute;
+  left: 10rem;
+}
+.ingredientPrice {
+  display: inline-block;
+  position: absolute;
+  right: 3rem;
+  text-align: right;
+  font-size: 1.9rem;
+}

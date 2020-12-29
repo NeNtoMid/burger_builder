@@ -52,13 +52,14 @@ export const authUser = (email, password, isLogin) => {
 
       dispatch({ type: AUTHENTICATE_USER_SUCCESS, payload: { response } });
       dispatch(checkAuthTimeout(expiresIn));
+      return true;
     } catch (error) {
       console.log(error);
-
       dispatch({
         type: AUTHENTICATE_USER_FAIL,
         payload: { error: error.response.data.error.message },
       });
+      return false;
     }
   };
 };

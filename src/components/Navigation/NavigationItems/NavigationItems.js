@@ -12,8 +12,6 @@ const navigationItems = (props) => {
   );
 
   if (props.isAuth) {
-    console.log('props.isAuth:', props.isAuth);
-
     authNavigationItems = (
       <Fragment>
         <NavigationItem destination='/orders'>Orders</NavigationItem>

@@ -2,26 +2,21 @@ import React, { useEffect } from 'react';
 
 import { Redirect } from 'react-router-dom';
 
-import { connect } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 import { logoutUser, deleteAllOrders } from './../../../store/actions/index';
 
 const Logout = (props) => {
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    props.onLogoutUser();
+    dispatch(logoutUser());
 
     return () => {
-      props.onDeleteAllOrders();
+      dispatch(deleteAllOrders());
     };
-  }, []);
+  }, [dispatch]);
   return <Redirect to='/' />;
 };
 
-const mapDisptachToProps = (dispatch) => {
-  return {
-    onLogoutUser: () => dispatch(logoutUser()),
-    onDeleteAllOrders: () => dispatch(deleteAllOrders()),
-  };
-};
-
-export default connect(null, mapDisptachToProps)(Logout);
+export default Logout;

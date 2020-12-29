@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useCallback } from 'react';
 
 import classes from './Layout.module.css';
 
@@ -9,13 +9,13 @@ import SideDrawer from '../../components/Navigation/SideDrawer/SideDrawer';
 const Layout = (props) => {
   const [state, setState] = useState({ showSideDrawer: false });
 
-  const sideDrawerOpenedHandler = () => {
+  const sideDrawerOpenedHandler = useCallback(() => {
     setState({ showSideDrawer: true });
-  };
+  }, []);
 
-  const sideDrawerClosedHandler = () => {
+  const sideDrawerClosedHandler = useCallback(() => {
     setState({ showSideDrawer: false });
-  };
+  }, []);
 
   return (
     <Fragment>
@@ -24,7 +24,7 @@ const Layout = (props) => {
         closed={sideDrawerClosedHandler}
         show={state.showSideDrawer}
       />
-      <div>,Backdrop</div>
+      <div>Backdrop</div>
       <main className={classes.Content}>{props.children}</main>
     </Fragment>
   );

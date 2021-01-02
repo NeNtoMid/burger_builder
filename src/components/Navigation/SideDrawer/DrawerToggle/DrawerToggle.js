@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import classes from './DrawerToggle.module.css';
 
@@ -10,4 +10,4 @@ const drawerToogle = (props) => (
   </div>
 );
 
-export default drawerToogle;
+export default memo(drawerToogle);

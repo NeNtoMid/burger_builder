@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import classes from './OrderSummaryElement.module.css';
 
@@ -17,4 +17,4 @@ const orderSummaryElement = (props) => (
   </li>
 );
 
-export default orderSummaryElement;
+export default memo(orderSummaryElement);

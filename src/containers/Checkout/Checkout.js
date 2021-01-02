@@ -1,33 +1,32 @@
-import React, { Fragment, Suspense } from 'react';
+import React, { Fragment, Suspense, memo } from 'react';
 
 import { Route, withRouter } from 'react-router-dom';
-
-import { connect } from 'react-redux';
 
 import Spinner from './../../components/UI/Spinner/Spinner';
 
 import CheckoutSummary from './../../components/Order/CheckoutSummary/CheckoutSummary';
 
+import useCheckout from './../../hooks/Checkout/useCheckout';
+
 const ContactData = React.lazy(() => import('./ContactData/ContactData'));
 
 const Checkout = (props) => {
-  const goToPrevPageHandler = () => {
-    props.history.goBack();
-  };
-
-  const goToNextPageHandler = () => {
-    props.history.replace(`${props.match.url}/contacts`);
-  };
+  const {
+    match,
+    ings,
+    goToPrevPageHandler,
+    goToNextPageHandler,
+  } = useCheckout();
 
   return (
     <Fragment>
       <CheckoutSummary
         prev={goToPrevPageHandler}
         next={goToNextPageHandler}
-        ingredients={props.ings}
+        ingredients={ings}
       />
       <Route
-        path={`${props.match.url}/contacts`}
+        path={`${match.url}/contacts`}
         exact
         render={() => (
           <Suspense fallback={<Spinner />}>
@@ -39,8 +38,4 @@ const Checkout = (props) => {
   );
 };
 
-const mapStateToProps = (state) => {
-  return { ings: state.ings.ingredients };
-};
-
-export default connect(mapStateToProps)(withRouter(Checkout));
+export default memo(withRouter(Checkout));

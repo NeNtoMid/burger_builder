@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import burgerLogo from './../../assets/images/logo.png';
 
@@ -10,4 +10,4 @@ const logo = (props) => (
   </div>
 );
 
-export default logo;
+export default memo(logo);

@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux';
 
 import { logoutUser, deleteAllOrders } from './../../../store/actions/index';
 
-const Logout = (props) => {
+const Logout = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {

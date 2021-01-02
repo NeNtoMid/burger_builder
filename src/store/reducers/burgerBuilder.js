@@ -27,6 +27,7 @@ const removeIngredient = (draft, ingredientType) => {
 };
 
 const updateIngredients = (draft, ingredients, price) => {
+  console.log('ingredients:', ingredients)
   draft.ingredients = ingredients;
   draft.totalPrice = price;
   draft.error = false;

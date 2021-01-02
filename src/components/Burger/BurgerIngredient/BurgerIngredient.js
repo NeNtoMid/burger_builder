@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -48,4 +48,4 @@ burgerIngredient.propTypes = {
   type: PropTypes.string.isRequired,
 };
 
-export default burgerIngredient;
+export default memo(burgerIngredient);

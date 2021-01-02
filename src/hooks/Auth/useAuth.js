@@ -137,16 +137,10 @@ const useAuth = () => {
     }
   }, [locationRouter.search, location]);
 
-  const onNavigateAuthHandler = useCallback(
-    () => handleAuthNavigation(history, location),
-    [history, location]
-  );
+  const onNavigateAuthHandler = () => handleAuthNavigation(history, location);
 
-  const onGetLoginDataHandler = useCallback(
-    (data) =>
-      handleLoginData(data, history, location, dispatch, ings, setLoading),
-    [history, location, dispatch, ings]
-  );
+  const onGetLoginDataHandler = (data) =>
+    handleLoginData(data, history, location, dispatch, ings, setLoading);
 
   handleUserRegistration(location, watch);
 

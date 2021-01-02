@@ -1,53 +1,21 @@
-import React, { Component, Fragment } from 'react';
+import React, { Fragment } from 'react';
 
 import Modal from './../../components/UI/Modal/Modal';
 
+import useWithErrorHandler from './../../hooks/withErrorHandler/useWithErrorHandler';
+
 const withErrorHandler = (WrappedComponent, axios) => {
-  return class extends Component {
-    state = {
-      error: null,
-    };
+  return (props) => {
+    const { error, leaveErrorHandler } = useWithErrorHandler(axios);
 
-    constructor(props) {
-      super(props);
-
-      this.reqInterceptor = axios.interceptors.request.use((req) => {
-        this.setState({ error: null });
-
-        return req;
-      });
-      this.resInterceptor = axios.interceptors.response.use(
-        (res) => {
-          return res;
-        },
-        (error) => {
-          console.log(error);
-          this.setState({ error });
-          return Promise.reject(error);
-        }
-      );
-    }
-
-    componentWillUnmount() {
-      axios.interceptors.request.eject(this.reqInterceptor);
-
-      axios.interceptors.response.eject(this.resInterceptor);
-    }
-
-    leaveErrorHandler = () => {
-      this.setState({ error: null });
-    };
-
-    render() {
-      return (
-        <Fragment>
-          <Modal show={this.state.error} modalClosed={this.leaveErrorHandler}>
-            {this.state.error ? this.state.error.message : null}
-          </Modal>
-          <WrappedComponent {...this.props} />;
-        </Fragment>
-      );
-    }
+    return (
+      <Fragment>
+        <Modal show={error} modalClosed={leaveErrorHandler}>
+          {error ? error.message : null}
+        </Modal>
+        <WrappedComponent {...props} />;
+      </Fragment>
+    );
   };
 };
 export default withErrorHandler;

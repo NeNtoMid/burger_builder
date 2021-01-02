@@ -39,15 +39,10 @@ const useOrders = () => {
     initializeOrders(dispatch, authToken, setState);
   }, [dispatch, authToken]);
 
-  const onDeleteOrderHandler = useCallback(
-    (_id) => handleDeleteOrder(_id, setState, dispatch, authToken),
-    [dispatch, authToken]
-  );
+  const onDeleteOrderHandler = (_id) =>
+    handleDeleteOrder(_id, setState, dispatch, authToken);
 
-  const onGetDetailsHandler = useCallback(
-    (_id) => handleGetDetails(_id, setState),
-    []
-  );
+  const onGetDetailsHandler = (_id) => handleGetDetails(_id, setState);
 
   return {
     state,

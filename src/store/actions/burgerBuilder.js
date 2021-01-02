@@ -23,6 +23,7 @@ export const initBurgerIngredients = () => {
         4
       );
 
+      console.log('fetchedIngredients.data:', fetchedIngredients.data);
       dispatch({
         type: FETCHED_INGREDIENTS_SUCCESS,
         payload: {

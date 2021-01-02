@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import classes from './Orders.module.css';
 
@@ -12,7 +12,7 @@ import withErrorHandler from './../../hoc/withErrorHandler/withErrorHandler';
 
 import useOrders from './../../hooks/Orders/useOrders';
 
-const Orders = (props) => {
+const Orders = () => {
   const {
     state,
     orders,
@@ -49,4 +49,4 @@ const Orders = (props) => {
   return <div>{ordersResult}</div>;
 };
 
-export default withErrorHandler(Orders, axios);
+export default memo(withErrorHandler(Orders, axios));

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 
 import classes from './Toolbar.module.css';
 
@@ -20,4 +20,4 @@ const toolbar = (props) => {
   );
 };
 
-export default toolbar;
+export default memo(toolbar);

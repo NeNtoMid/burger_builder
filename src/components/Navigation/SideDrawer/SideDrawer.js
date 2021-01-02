@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, memo } from 'react';
 
 import classes from './SideDrawer.module.css';
 
@@ -36,4 +36,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps)(sideDrawer);
+export default memo(connect(mapStateToProps)(sideDrawer));
